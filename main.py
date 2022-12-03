@@ -8,8 +8,11 @@ while True:
     case "add":
       todo = input("Add a todo: ")
       todos.append(todo)
+    
     case "show":
-      print("\n".join(todos))
+      for index, item in enumerate(todos):
+        print(f"{index}-{item}")
+    
     case "edit":
       number = int(input("Number of the todo to edit: "))
        #Adjust for zero indexing
@@ -17,6 +20,7 @@ while True:
       new_todo = input("Enter new todo: ")
       # Change todo with new one
       todos[number] =  new_todo
+    
     case "exit":
       break
 

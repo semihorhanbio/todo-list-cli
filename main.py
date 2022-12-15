@@ -27,12 +27,26 @@ while True:
        #Adjust for zero indexing
       number -= 1
       new_todo = input("Enter new todo: ")
-      # Change todo with new one
-      todos[number] =  new_todo
+      with open("todos.txt", "r") as file:
+        todos =  file.readlines()
+      
+      # Change todo with new one  
+      todos[number] =  new_todo + "\n"
+      
+      with open("todos.txt", "w") as file:
+        file.writelines(todos)
 
     case "complete":
       number = int(input("Number of the todo to complete: "))
-      todos.pop(number - 1)
+      with open("todos.txt", "r") as file:
+        todos = file.readlines()
+      
+      removed_todo = todos.pop(number - 1).strip("\n")
+      
+      with open("todos.txt", "w") as file:
+        file.writelines(todos)
+      
+      print(f"Todo {removed_todo} was removed from the list")
       
     case "exit":
       break

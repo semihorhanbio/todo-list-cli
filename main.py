@@ -4,7 +4,7 @@ while True:
 
   
   if "add" in user_action:
-    todo = input("Add a todo: ") + "\n"
+    todo = user_action[4:]
     
     with open("todos.txt", "r") as file:
       todos = file.readlines()
@@ -23,7 +23,7 @@ while True:
       print(f"{index + 1}-{item}")
   
   elif "edit" in user_action:
-    number = int(input("Number of the todo to edit: "))
+    number = int(user_action[5:])
     #Adjust for zero indexing
     number -= 1
     new_todo = input("Enter new todo: ")
@@ -37,7 +37,7 @@ while True:
       file.writelines(todos)
   
   elif "complete" in user_action:
-    number = int(input("Number of the todo to complete: "))
+    number = int(user_action[9:])
     with open("todos.txt", "r") as file:
       todos = file.readlines()
     
@@ -50,5 +50,7 @@ while True:
   
   elif "exit" in user_action:
     break
+  else:
+    print("command not found")
 
 print("Bye")

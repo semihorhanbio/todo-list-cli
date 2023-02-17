@@ -1,5 +1,6 @@
 { pkgs }: {
   deps = [
+    pkgs.docker
     pkgs.python3
   ];
   env = {
